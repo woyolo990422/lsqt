@@ -1,0 +1,6 @@
+/.vs
+/.git
+/x64
+__pycache__
+.gitgnore
+CudaRuntime1*

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{2E3D3D8B-AA2C-4A1A-BEFC-FB7775325E5E}</ProjectGuid>
+    <RootNamespace>CudaRuntime1</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 11.8.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <LibraryPath>C:\ProgramData\Anaconda3\libs;$(LibraryPath)</LibraryPath>
+    <ExternalIncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\ProgramData\Anaconda3\include</ExternalIncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ExternalIncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\ProgramData\Anaconda3\include</ExternalIncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <ReferencePath>$(VC_ReferencesPath_x64);</ReferencePath>
+    <LibraryPath>C:\ProgramData\Anaconda3\libs;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;WIN64;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>cudart_static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;python38_d.lib;python38.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);$(CudaToolkitLibDir)C:\ProgramData\Anaconda3\libs</AdditionalLibraryDirectories>
+    </Link>
+    <CudaCompile>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+      <Include>
+      </Include>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;WIN64;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>cudart_static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);$(CudaToolkitLibDir)C:\ProgramData\Anaconda3\libs</AdditionalLibraryDirectories>
+    </Link>
+    <CudaCompile>
+      <Include>
+      </Include>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CudaCompile Include="error.cu" />
+    <CudaCompile Include="lsqt.cu" />
+    <CudaCompile Include="main.cu" />
+    <CudaCompile Include="main_common.cu" />
+    <CudaCompile Include="pytb.cu" />
+    <CudaCompile Include="Run.cu" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="get_data.py" />
+    <None Include="main_gpumd\main.py" />
+    <None Include="main_gpumd\Run.py" />
+    <None Include="main_gpumd\__init__.py" />
+    <None Include="measure\band.py" />
+    <None Include="measure\measure.py" />
+    <None Include="measure\sparseH.py" />
+    <None Include="measure\__init__.py" />
+    <None Include="utilities\bondlengthDB.py" />
+    <None Include="utilities\Index.py" />
+    <None Include="utilities\onsiteDB.py" />
+    <None Include="utilities\param_preprocess.py" />
+    <None Include="utilities\seed.py" />
+    <None Include="utilities\SK_utilities.py" />
+    <None Include="utilities\__init__.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="arrayobject.h" />
+    <ClInclude Include="common.cuh" />
+    <ClInclude Include="error.cuh" />
+    <ClInclude Include="gpu_vector.cuh" />
+    <ClInclude Include="lsqt.cuh" />
+    <ClInclude Include="main_common.cuh" />
+    <ClInclude Include="numpy\arrayobject.h" />
+    <ClInclude Include="numpy\arrayscalars.h" />
+    <ClInclude Include="numpy\halffloat.h" />
+    <ClInclude Include="numpy\ndarrayobject.h" />
+    <ClInclude Include="numpy\ndarraytypes.h" />
+    <ClInclude Include="numpy\noprefix.h" />
+    <ClInclude Include="numpy\npy_1_7_deprecated_api.h" />
+    <ClInclude Include="numpy\npy_3kcompat.h" />
+    <ClInclude Include="numpy\npy_common.h" />
+    <ClInclude Include="numpy\npy_cpu.h" />
+    <ClInclude Include="numpy\npy_endian.h" />
+    <ClInclude Include="numpy\npy_interrupt.h" />
+    <ClInclude Include="numpy\npy_math.h" />
+    <ClInclude Include="numpy\npy_no_deprecated_api.h" />
+    <ClInclude Include="numpy\npy_os.h" />
+    <ClInclude Include="numpy\numpyconfig.h" />
+    <ClInclude Include="numpy\oldnumeric.h" />
+    <ClInclude Include="numpy\old_defines.h" />
+    <ClInclude Include="numpy\ufuncobject.h" />
+    <ClInclude Include="numpy\utils.h" />
+    <ClInclude Include="numpy\_neighborhood_iterator_imp.h" />
+    <ClInclude Include="numpy\_numpyconfig.h" />
+    <ClInclude Include="numpy\__multiarray_api.h" />
+    <ClInclude Include="numpy\__ufunc_api.h" />
+    <ClInclude Include="pytb.cuh" />
+    <ClInclude Include="Run.cuh" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="numpy\multiarray_api.txt" />
+    <Text Include="numpy\ufunc_api.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 11.8.targets" />
+  </ImportGroup>
+</Project>
